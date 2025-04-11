@@ -21,6 +21,7 @@ const Search: React.FC = () => {
       })
       .then((response) => {
         setGenres(response.data.genres);
+        console.log('This recommend sess',response);
       })
       .catch((error) => {
         console.error("Error fetching genres:", error);
@@ -41,6 +42,7 @@ const Search: React.FC = () => {
           limit: 10,
         },
       });
+      console.log('This search sess',response);
       setResults(response.data);
     } catch (error) {
       console.error("Error searching Spotify:", error);
@@ -60,6 +62,7 @@ console.log(token);
           limit: 10,
         },
       });
+      console.log('This recommend sess fo rtracks',response);
       setResults({ tracks: { items: response.data.tracks } });
     } catch (error) {
       console.error("Error fetching recommendations:", error);
