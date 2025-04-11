@@ -1,6 +1,6 @@
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID as string;
 const redirectUri = import.meta.env.VITE_REDIRECT_URI as string;
-const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET as string; // Use env variable
+const clientSecret = 'b548a8621fda41b2901e751a1eb6924c';
 console.log("Client ID:", clientId);
 console.log("Redirect URI:", redirectUri);
 console.log("Client Secret:", clientSecret);
