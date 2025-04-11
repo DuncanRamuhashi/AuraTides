@@ -6,7 +6,6 @@ import {
   SpotifyTrack,
   SpotifyArtist,
 } from "../types/Spotify";
-
 const Search: React.FC = () => {
   const [query, setQuery] = useState<string>("");
   const [results, setResults] = useState<SpotifySearchResult>({});
@@ -161,5 +160,4 @@ const Search: React.FC = () => {
     </div>
   );
 };
-
 export default Search;

@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getAccessToken } from "../utils/SpotifyAuth";
-
 const Callback: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();

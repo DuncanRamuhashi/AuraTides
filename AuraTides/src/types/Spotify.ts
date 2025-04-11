@@ -4,7 +4,7 @@ export interface SpotifyUser {
     email?: string;
   }
   
-  export interface SpotifyPlaylist {
+export interface SpotifyPlaylist {
     id: string;
     name: string;
     owner: {
@@ -17,20 +17,20 @@ export interface SpotifyUser {
     };
   }
   
-  export interface SpotifyTrack {
+export interface SpotifyTrack {
     id: string;
     name: string;
     artists: { name: string }[];
     album: { name: string };
   }
   
-  export interface SpotifyArtist {
-    id: string;
+export interface SpotifyArtist {
+  id: string;
     name: string;
     genres: string[];
   }
   
-  export interface SpotifySearchResult {
+export interface SpotifySearchResult {
     playlists?: {
       items: SpotifyPlaylist[];
     };

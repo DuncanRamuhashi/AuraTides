@@ -1,5 +1,4 @@
 import { getSpotifyAuthUrl } from "../utils/SpotifyAuth";
-
 const Login: React.FC = () => {
   return (
     <div className="text-center mt-12">
@@ -13,5 +12,4 @@ const Login: React.FC = () => {
     </div>
   );
 };
-
 export default Login;

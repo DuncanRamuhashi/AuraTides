@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 const Nav = () => {
   return (
     <nav className="bg-gray-800 p-4">
@@ -24,5 +23,4 @@ const Nav = () => {
     </nav>
   );
 };
-
 export default Nav;
