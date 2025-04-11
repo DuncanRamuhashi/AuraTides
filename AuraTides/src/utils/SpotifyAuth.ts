@@ -5,11 +5,12 @@ console.log("Client ID:", clientId);
 console.log("Redirect URI:", redirectUri);
 console.log("Client Secret:", clientSecret);
 const scopes = [
-  "user-read-private",
-  "user-read-email",
-  "playlist-read-private",
-  "playlist-read-collaborative",
-].join(" ");
+    "user-read-private",
+    "user-read-email",
+    "playlist-read-private",
+    "playlist-read-collaborative"
+  ].join(" ");
+  
 
 export const getSpotifyAuthUrl = (): string => {
   if (!clientId || !redirectUri) {

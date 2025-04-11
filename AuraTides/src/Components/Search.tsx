@@ -46,7 +46,7 @@ const Search: React.FC = () => {
       console.error("Error searching Spotify:", error);
     }
   };
-
+console.log(token);
   const handleGenreSearch = async (genre: string) => {
     if (!token) return;
 
