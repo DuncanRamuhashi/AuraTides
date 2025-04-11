@@ -1,7 +1,7 @@
-const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-const redirectUri = import.meta.env.VITE_REDIRECT_URI;
-console.log(clientId);
-console.log(redirectUri);
+const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID as string;
+const redirectUri = import.meta.env.VITE_REDIRECT_URI as string;
+console.log("Client ID:", clientId);
+console.log("Redirect URI:", redirectUri);
 const scopes = [
   "user-read-private",
   "user-read-email",
@@ -22,7 +22,7 @@ export const getAccessToken = async (code: string): Promise<string | null> => {
     throw new Error("Missing Spotify Client ID or Redirect URI");
   }
   try {
-    const response = await fetch(`https://accounts.spotify.com/api/${'b548a8621fda41b2901e751a1eb6924c'}`, {
+    const response = await fetch("https://accounts.spotify.com/api/token", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
