@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { SpotifySearchResult, SpotifyPlaylist, SpotifyTrack, SpotifyArtist } from "../types/Spotify";
+import {
+  SpotifySearchResult,
+  SpotifyPlaylist,
+  SpotifyTrack,
+  SpotifyArtist,
+} from "../types/Spotify";
 
 const Search: React.FC = () => {
   const [query, setQuery] = useState<string>("");
@@ -8,7 +13,6 @@ const Search: React.FC = () => {
   const [genres, setGenres] = useState<string[]>([]);
   const token = localStorage.getItem("spotify_token");
 
-  // Fetch available genres on mount
   useEffect(() => {
     if (!token) return;
 
@@ -24,7 +28,6 @@ const Search: React.FC = () => {
       });
   }, [token]);
 
-  // Handle keyword search
   const handleSearch = async () => {
     if (!token || !query) return;
 
@@ -45,7 +48,6 @@ const Search: React.FC = () => {
     }
   };
 
-  // Handle genre-based recommendations
   const handleGenreSearch = async (genre: string) => {
     if (!token) return;
 
@@ -65,7 +67,6 @@ const Search: React.FC = () => {
     }
   };
 
-  // Trigger search on Enter key
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSearch();
@@ -73,31 +74,34 @@ const Search: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Search Music</h1>
-      <div style={{ marginBottom: "20px" }}>
+    <div className="p-6 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold mb-6 text-center">Search Music</h1>
+
+      <div className="mb-6 flex flex-col sm:flex-row items-center gap-4 justify-center">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyPress}
           placeholder="Enter genre, artist, track..."
-          style={{ padding: "8px", width: "300px", marginRight: "10px" }}
+          className="px-4 py-2 w-full sm:w-80 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
         />
-        <button onClick={handleSearch} style={{ padding: "8px 16px" }}>
+        <button
+          onClick={handleSearch}
+          className="px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition duration-300"
+        >
           Search
         </button>
       </div>
 
-      {/* Genre Buttons */}
-      <div style={{ marginBottom: "20px" }}>
-        <h3>Explore Genres</h3>
-        <div>
+      <div className="mb-8 text-center">
+        <h3 className="text-xl font-semibold mb-2">Explore Genres</h3>
+        <div className="flex flex-wrap justify-center gap-3">
           {genres.slice(0, 5).map((genre) => (
             <button
               key={genre}
               onClick={() => handleGenreSearch(genre)}
-              style={{ margin: "5px", padding: "5px 10px" }}
+              className="bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full px-4 py-1 text-sm transition"
             >
               {genre}
             </button>
@@ -105,14 +109,16 @@ const Search: React.FC = () => {
         </div>
       </div>
 
-      {/* Search Results */}
       {results.playlists && (
-        <div>
-          <h2>Playlists</h2>
-          <ul>
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold mb-2">Playlists</h2>
+          <ul className="list-disc list-inside space-y-1">
             {results.playlists.items.map((playlist: SpotifyPlaylist) => (
               <li key={playlist.id}>
-                {playlist.name} (Owner: {playlist.owner.display_name || playlist.owner.id})
+                {playlist.name}{" "}
+                <span className="text-sm text-gray-500">
+                  (Owner: {playlist.owner.display_name || playlist.owner.id})
+                </span>
               </li>
             ))}
           </ul>
@@ -120,12 +126,15 @@ const Search: React.FC = () => {
       )}
 
       {results.tracks && (
-        <div>
-          <h2>Tracks</h2>
-          <ul>
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold mb-2">Tracks</h2>
+          <ul className="list-disc list-inside space-y-1">
             {results.tracks.items.map((track: SpotifyTrack) => (
               <li key={track.id}>
-                {track.name} by {track.artists.map((artist) => artist.name).join(", ")}
+                {track.name} by{" "}
+                <span className="text-sm text-gray-600">
+                  {track.artists.map((artist) => artist.name).join(", ")}
+                </span>
               </li>
             ))}
           </ul>
@@ -134,12 +143,16 @@ const Search: React.FC = () => {
 
       {results.artists && (
         <div>
-          <h2>Artists</h2>
-          <ul>
+          <h2 className="text-2xl font-semibold mb-2">Artists</h2>
+          <ul className="list-disc list-inside space-y-1">
             {results.artists.items.map((artist: SpotifyArtist) => (
               <li key={artist.id}>
                 {artist.name}{" "}
-                {artist.genres.length > 0 && `(${artist.genres.join(", ")})`}
+                {artist.genres.length > 0 && (
+                  <span className="text-sm text-gray-500">
+                    ({artist.genres.join(", ")})
+                  </span>
+                )}
               </li>
             ))}
           </ul>

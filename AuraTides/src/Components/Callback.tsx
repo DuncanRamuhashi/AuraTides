@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { getAccessToken } from "../utils/SpotifyAuth";
 
 const Callback: React.FC = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -14,15 +14,15 @@ const Callback: React.FC = () => {
       getAccessToken(code).then((token) => {
         if (token) {
           localStorage.setItem("spotify_token", token);
-          history.push("/search");
+          navigate("/search");
         } else {
-          history.push("/");
+          navigate("/");
         }
       });
     } else {
-      history.push("/");
+      navigate("/");
     }
-  }, [location, history]);
+  }, [location, navigate]);
 
   return <div>Loading...</div>;
 };

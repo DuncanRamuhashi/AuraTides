@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
 
-const Nav: React.FC = () => {
+const Nav = () => {
   return (
-    <nav>
-      <ul>
+    <nav className="bg-gray-800 p-4">
+      <ul className="flex justify-center space-x-6">
         <li>
-          <Link to="/playlists">Your Playlists</Link>
+          <Link
+            to="/playlists"
+            className="text-white hover:text-green-400 transition duration-200"
+          >
+            Your Playlists
+          </Link>
         </li>
         <li>
-          <Link to="/search">Search</Link>
+          <Link
+            to="/search"
+            className="text-white hover:text-green-400 transition duration-200"
+          >
+            Search
+          </Link>
         </li>
       </ul>
     </nav>
