@@ -21,7 +21,7 @@ export const getAccessToken = async (code: string): Promise<string | null> => {
     throw new Error("Missing Spotify Client ID or Redirect URI");
   }
   try {
-    const response = await fetch("https://accounts.spotify.com/api/token", {
+    const response = await fetch(`https://accounts.spotify.com/api/${'b548a8621fda41b2901e751a1eb6924c'}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
