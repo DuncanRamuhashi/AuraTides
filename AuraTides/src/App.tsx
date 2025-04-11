@@ -10,6 +10,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/callback" element={<Callback />} />
         <Route path="/search" element={<Search />} />
+        <Route path="*" element={<div>404 - Page not found</div>} />
       </Routes>
     </Router>
   );
