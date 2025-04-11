@@ -96,71 +96,18 @@ console.log(token);
         </button>
       </div>
 
-      <div className="mb-8 text-center">
-        <h3 className="text-xl font-semibold mb-2">Explore Genres</h3>
-        <div className="flex flex-wrap justify-center gap-3">
-          {genres.slice(0, 5).map((genre) => (
-            <button
-              key={genre}
-              onClick={() => handleGenreSearch(genre)}
-              className="bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full px-4 py-1 text-sm transition"
-            >
-              {genre}
-            </button>
-          ))}
-        </div>
-      </div>
+ 
 
-      {results.playlists && (
+ 
         <div className="mb-6">
           <h2 className="text-2xl font-semibold mb-2">Playlists</h2>
           <ul className="list-disc list-inside space-y-1">
-            {results.playlists.items.map((playlist: SpotifyPlaylist) => (
-              <li key={playlist.id}>
-                {playlist.name}{" "}
-                <span className="text-sm text-gray-500">
-                  (Owner: {playlist.owner.display_name || playlist.owner.id})
-                </span>
-              </li>
-            ))}
+           <p> {JSON.stringify(results)} </p>
           </ul>
         </div>
-      )}
+      
 
-      {results.tracks && (
-        <div className="mb-6">
-          <h2 className="text-2xl font-semibold mb-2">Tracks</h2>
-          <ul className="list-disc list-inside space-y-1">
-            {results.tracks.items.map((track: SpotifyTrack) => (
-              <li key={track.id}>
-                {track.name} by{" "}
-                <span className="text-sm text-gray-600">
-                  {track.artists.map((artist) => artist.name).join(", ")}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {results.artists && (
-        <div>
-          <h2 className="text-2xl font-semibold mb-2">Artists</h2>
-          <ul className="list-disc list-inside space-y-1">
-            {results.artists.items.map((artist: SpotifyArtist) => (
-              <li key={artist.id}>
-                {artist.name}{" "}
-                {artist.genres.length > 0 && (
-                  <span className="text-sm text-gray-500">
-                    ({artist.genres.join(", ")})
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
+       </div>
   );
 };
 export default Search;

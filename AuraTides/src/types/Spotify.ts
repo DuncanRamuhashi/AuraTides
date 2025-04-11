@@ -10,6 +10,7 @@ export interface SpotifyPlaylist {
     owner: {
       id: string;
       display_name?: string;
+      email?: string;
     };
     tracks: {
       href: string;
