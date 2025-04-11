@@ -1,6 +1,7 @@
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 const redirectUri = import.meta.env.VITE_REDIRECT_URI;
 console.log(clientId);
+console.log(redirectUri);
 const scopes = [
   "user-read-private",
   "user-read-email",
