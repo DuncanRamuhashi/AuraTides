@@ -26,6 +26,7 @@ export const getAccessToken = async (code: string): Promise<string | null> => {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `Basic ${btoa(`${clientId}:${'b548a8621fda41b2901e751a1eb6924c'}`)}`, 
       },
       body: new URLSearchParams({
         grant_type: "authorization_code",
